@@ -2150,7 +2150,9 @@ inline size_t to_chars(substr buf, csubstr v) noexcept
 {
     C4_ASSERT(!buf.overlaps(v));
     size_t len = buf.len < v.len ? buf.len : v.len;
-    memcpy(buf.str, v.str, len);
+    if (len > 0){
+        memcpy(buf.str, v.str, len);
+    }
     return v.len;
 }
 
@@ -2177,7 +2179,9 @@ inline size_t to_chars(substr buf, substr v) noexcept
 {
     C4_ASSERT(!buf.overlaps(v));
     size_t len = buf.len < v.len ? buf.len : v.len;
-    memcpy(buf.str, v.str, len);
+    if (len > 0){
+        memcpy(buf.str, v.str, len);
+    }
     return v.len;
 }
 
